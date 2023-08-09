@@ -1,12 +1,13 @@
 from flask import Flask, jsonify
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
+from flask_cors import CORS
 
 uri = "mongodb+srv://sharmakavyaop702:qsGaeuzAMbuWIQ6r@cluster0.zmpglyi.mongodb.net/?retryWrites=true&w=majority"
 client = MongoClient(uri, server_api=ServerApi('1'))
 
 app = Flask(__name__)
-
+CORS(app)
 def get_data():
     try:
         client.admin.command('ping')
